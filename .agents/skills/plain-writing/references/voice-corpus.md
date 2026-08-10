@@ -33,6 +33,15 @@ Why it works: direct, warm, and specific about what kind of conversation is usef
 Why it works: the reader can picture the job. The sentence describes an outcome,
 not an "AI-powered research ecosystem."
 
+### Compressed project setup
+
+> Initially built to keep up with earnings calls for companies in the portfolio
+> and under evaluation. Evolved into a full fundamental research dashboard.
+
+Why it works: it says where the project started and where it ended without walking
+through every intermediate feature. The slightly conversational compression is
+part of the voice; do not expand it into a product brochure.
+
 ## What does not sound right
 
 These patterns appeared repeatedly in the public investing material:

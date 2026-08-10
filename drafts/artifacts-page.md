@@ -1,28 +1,28 @@
-These are tools I actually use. Most started because a spreadsheet or an existing product gave me an answer I didn't trust.
+Some tools I've built because spreadsheets, existing products, or vanilla LLM skills didn't fit my use cases.
 
 ## Portfolio Tracker
 
 It connects to my brokerage accounts and works out what my portfolio actually returned. It matches performance to when money moved, then compares the result with buying the index.
 
-I built it because most apps show one return number and hide the math. That falls apart when I add or withdraw cash during the year. The project is private for now.
+I built it because most apps show returns based on existing holdings, but not based on portfolio composition over time. This forms the data foundation to answer if my decisions are generating above market returns.
 
 ## [Earnings Summary](https://github.com/bhanunuthakki/earnings-summary)
 
-It checks new filings, earnings call transcripts, and investor documents for the companies I follow. Each morning it tells me what changed.
+Initially built to keep up with earnings calls for companies in my portfolio and under evaluation. It became a full research dashboard and financial database.
 
-The useful part isn't the summary. Every AI call goes through one place, picks a model for the job, checks the answer against a fixed structure, and logs the cost and time. The code is public on GitHub.
+It pulls filings and financial data from the U.S. Securities and Exchange Commission (SEC) and Financial Modeling Prep (FMP). The data layer is intentionally obsessive: it ranks sources, validates numbers, tracks restatements, and keeps the source behind each figure. Large language model (LLM) analysis sits on top, covering earnings, thesis tracking, valuation, bear cases, and research chat.
+
+## Date Suggester
+
+I got tired of making the same "what should we do this weekend?" decision from scratch. It scans our calendars to build a repository of places we've been, then ranks new options based on recency, weather, budget, distance, and our preferences.
+
+It builds a ranked digest weekly and emails me when it's ready. It finds windows for quarterly retreats and helps plan trips, covering seasonality, budgets, transit, work conflicts, and booking status.
 
 ## Angel Memos
 
-I write confidential diligence in a private document. This tool turns it into a full investment memo with a bear case. It also creates a separate, anonymized version that I can share publicly.
+It's a Chrome extension and research pipeline for angel deals. One click on an AngelList page pulls down the deal memo and pitch deck, then starts the research process in a consistent investment-memo format.
 
-The public copy never touches the confidential source. Names and identifying details are removed before Blog Engine sees it.
-
-## Blog Engine
-
-It turns notes I already write in Google Docs into WordPress drafts. It never publishes on its own, and it won't quietly rewrite a live post if the source changes.
-
-This keeps the blog useful without turning it into another job.
+It walks through each part of diligence, gives me a place to layer in my own notes and thesis, and turns open questions into diligence topics. It gets me from raw documents to an investment decision faster without outsourcing the decision.
 
 ## Demos
 
