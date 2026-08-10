@@ -1,0 +1,20 @@
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+.ruff_cache/
+.tmp/
+.cache/
+*.egg-info/
+
+# Sync state is machine-local: it records which WordPress post each source
+# entry became. Committing it would make the ledger a merge target.
+state/*.json
+state/*.log
+
+# Never commit credentials. Google OAuth artifacts live in
+# %USERPROFILE%\.config\blog-engine\, but guard against a stray copy here.
+credentials.json
+google-token.json
+*.env
+!*.env.example

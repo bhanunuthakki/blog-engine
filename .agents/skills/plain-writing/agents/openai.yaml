@@ -1,0 +1,4 @@
+interface:
+  display_name: "Plain Writing"
+  short_description: "Make Bhanu public writing terse and human"
+  default_prompt: "Use $plain-writing to compress this draft into a plain, succinct voice without losing facts."

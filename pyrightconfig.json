@@ -1,0 +1,17 @@
+{
+  "include": ["src", "tests"],
+  "exclude": [".venv", ".tmp", ".cache"],
+  "extraPaths": ["src"],
+  "venvPath": ".",
+  "venv": ".venv",
+  "pythonVersion": "3.13",
+  "typeCheckingMode": "strict",
+  "reportMissingTypeStubs": false,
+  "executionEnvironments": [
+    {
+      "root": "tests",
+      "reportPrivateUsage": "none",
+      "reportUnusedFunction": "none"
+    }
+  ]
+}

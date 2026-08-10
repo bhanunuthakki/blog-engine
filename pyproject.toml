@@ -1,0 +1,56 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "blog-engine"
+version = "0.1.0"
+description = "Source-of-truth-to-WordPress pipeline for bhanunuthakki.com"
+requires-python = ">=3.13"
+dependencies = [
+    "pydantic>=2.7",
+    "click>=8.1",
+    "httpx>=0.27",
+    "google-api-python-client>=2.130",
+    "google-auth-oauthlib>=1.2",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8",
+    "ruff>=0.5",
+    "pyright>=1.1.380",
+    "basedpyright==1.39.4",
+]
+
+[project.scripts]
+blog-engine = "blog_engine.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+include = ["blog_engine*"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py313"
+extend-exclude = [".venv", ".tmp", ".cache"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "N", "UP", "B", "A", "RET", "SIM", "RUF"]
+ignore = [
+    "E501",   # handled by formatter
+    "RUF002", # ambiguous unicode in docstrings — em-dash is intentional
+]
+
+[tool.ruff.lint.per-file-ignores]
+"tests/**" = ["B", "N802"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+# Integration tests hit the real WordPress site and real Google Docs. Opt in
+# explicitly via `pytest -m integration`.
+addopts = "-ra --strict-markers -m 'not integration'"
+pythonpath = ["src"]
+markers = [
+    "integration: real-WordPress or real-Google-Docs tests (slow; skipped by default)",
+]

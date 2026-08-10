@@ -1,0 +1,4 @@
+interface:
+  display_name: "Book Review"
+  short_description: "Create attribution-checked book and podcast notes"
+  default_prompt: "Use $book-review to turn my reactions into terse notes, use recall to find missed ideas, and verify that each example is attributed to the work."
