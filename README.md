@@ -16,7 +16,8 @@ action in WP Admin. See [AGENTS.md](AGENTS.md) for why, for the positioning filt
 that decides whether a source entry deserves a post at all, and for the plain-
 language voice rules every draft has to follow.
 
-**What to write next lives in [ROADMAP.md](ROADMAP.md).**
+**Come back to [BLOG_NEXT_STEPS.txt](BLOG_NEXT_STEPS.txt) for the current checklist.
+[ROADMAP.md](ROADMAP.md) contains the longer rationale and post backlog.**
 
 ## Setup
 

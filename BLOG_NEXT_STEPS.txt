@@ -1,0 +1,173 @@
+BLOG NEXT STEPS
+Last updated: 2026-08-10
+
+Use this file as the operational checklist. ROADMAP.md contains the longer
+rationale and post backlog.
+
+
+OPERATING RULES
+
+- The builds are the work. The blog is supporting infrastructure.
+- Keep the blog to roughly 1-2 hours a week, and most weeks zero.
+- Publish manually. Blog Engine creates drafts and never publishes by itself.
+- Use $plain-writing for public copy. Treat Bhanu's latest edits and omissions as
+  authoritative.
+- Do not create content merely to maintain a cadence.
+
+
+COMPLETED
+
+[x] Replace the outdated Gems/grades table with actual projects.
+[x] Add Portfolio Tracker, Earnings Summary, Date Suggester, and Angel Memos to
+    the Artifacts page.
+[x] Rewrite the Investing page as an evergreen statement of process instead of a
+    manually maintained allocation table.
+[x] Keep the anonymized public investing-memo link.
+[x] Build and harden the $plain-writing skill from Bhanu's edits.
+[x] Put Blog Engine in a private GitHub repository and protect local credentials
+    and sync state from commits.
+
+
+DO NEXT
+
+1. RECORD THE FIRST PROJECT DEMOS
+
+Start with:
+  a. Portfolio Tracker
+  b. Earnings Summary
+
+Then record Date Suggester and Angel Memos when there is a useful workflow or
+decision to show.
+
+Each video:
+- 3-5 minutes.
+- About 20 seconds on why the tool exists.
+- Show the tool working on real or safely scrubbed data.
+- Explain only the design choices that materially help the viewer understand it.
+- Upload publicly to YouTube.
+- Add the YouTube URL to drafts/artifacts-page.md and the live Artifacts page.
+- Keep 2-3 short paragraphs around the embed for people who will not watch.
+
+Redaction gate before every upload:
+- Remove dollar balances and position sizes.
+- Decide deliberately whether holdings or the coverage universe can appear.
+- Clear terminal history, API keys, tokens, .env output, and personal file paths.
+- Use a clean browser profile with no personal tabs, bookmarks, or account email.
+- Turn off notifications.
+- Watch the entire video full-screen before uploading. YouTube cannot edit a
+  leaked frame after publication.
+
+
+2. BUILD PUBLIC PORTFOLIO REPORTING IN EARNINGS SUMMARY
+
+Create a public-safe export rather than maintaining the Investing page manually.
+
+Monthly snapshot:
+- Snapshot date.
+- Public holdings and weights, if deliberately approved for disclosure.
+- Performance versus the chosen benchmark.
+- Current thesis in a few lines.
+- What changed since the previous snapshot.
+- Any thesis break or risk that needs attention.
+
+Quarterly report:
+- What worked.
+- What did not.
+- Material thesis changes.
+- Portfolio-level risks and concentration.
+- Performance context, not just a return number.
+
+Privacy rules:
+- Never expose dollar balances, cost basis, account names, tax lots, or private
+  transaction details.
+- Generate the report automatically, but require a manual privacy review before
+  public release.
+- Give the reports a stable public index URL.
+- Once the index exists, add it to drafts/investing-page.md and the live Investing
+  page.
+
+
+3. FINISH THE BUILDER-EVIDENCE SURFACES
+
+- Verify that the Earnings Summary GitHub repository has a one-line description
+  that reflects the financial database and research system, not only earnings.
+- Add GitHub to the Contact page and footer.
+- Add the YouTube channel to Contact/footer after the first demo is public.
+- Add an RSS link so readers can follow without a newsletter.
+- Fix the theme header's small horizontal overflow on mobile. The page bodies fit
+  at 390 px; the full-width header still creates a scrollbar.
+
+
+4. CONDENSE FUTURE PUBLIC INVESTING MEMOS UPSTREAM
+
+Make the change in Angel Memos, where the anonymized public derivative is created.
+Blog Engine must never read the confidential source document.
+
+For each new public memo, keep:
+- The decision.
+- Two or three facts that drive it.
+- Outcome or return math when available.
+- The main risk or disconfirming fact.
+
+Cut repeated market descriptions, generic praise, and feature inventories. Use
+$plain-writing before placement. The 15 historical memos remain suppressed and do
+not need to be rewritten for the blog.
+
+
+5. PUBLISH THE H1 2026 READING ROUNDUP
+
+- Review drafts/phase-1-favorite-reads-h1-2026.md.
+- Cover the eight reads rated 8/10 or higher in one post, not eight posts.
+- Mention the 7/10 books and the unfinished book briefly for honesty.
+- Keep one idea that stuck from each work; do not summarize each book.
+- Publish manually.
+- After publication, suppress the covered source entries so blog-sync does not
+  offer duplicate individual posts.
+
+
+CONTENT QUEUE AFTER THE ROUNDUP
+
+1. Angel Memos build log plus demo.
+   Angle: I built a tool that argues against my own investments.
+
+2. Earnings Summary build log plus demo.
+   Pick one direction, not both:
+   - Why a spreadsheet is the wrong tool for repeated financial research.
+   - How the data and LLM analysis are governed and hardened.
+
+3. AI in corporate finance.
+   Build a downloadable task taxonomy showing what can be automated now, what is
+   AI-assisted, and what remains human. This is the highest-value post and should
+   not be rushed.
+
+4. Later options, only when there is genuine interest:
+   - Portfolio Tracker and the right way to benchmark investment performance.
+   - A Blog Engine build log.
+   - Individual book reviews only for a 9/10 that changed something.
+   - H2 2026 reading roundup.
+   - Methane.
+   - Thermal batteries.
+   - Plastics recalibration.
+   - Unit economics of healthcare, higher education, or transit as separate posts.
+
+
+DISTRIBUTION AND FEEDBACK
+
+- Cross-post or summarize strong posts on LinkedIn consistently.
+- Do not build an autonomous content calendar or ideation system.
+- After there is enough traffic to justify it, choose lightweight analytics such
+  as Plausible or Fathom. Avoid adding Google Analytics by default.
+- Use feedback and actual conversations, not post count, as the success measure.
+
+
+ONGOING MAINTENANCE
+
+- Do not launch a wholesale rewrite of the existing blog. The homepage, Contact
+  page, and Subtract First already sound strong.
+- Apply $plain-writing when a page or post is already being touched.
+- Keep drafts/artifacts-page.md and drafts/investing-page.md synchronized with the
+  live pages after manual WordPress edits.
+- Review the Artifacts page when a project materially changes or a demo is added.
+  Do not add grades, Gems, or manually maintained status labels.
+- Keep historical public memo entries suppressed unless Bhanu explicitly chooses
+  one to publish.
