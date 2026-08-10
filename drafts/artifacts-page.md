@@ -10,13 +10,13 @@ I built it because most apps show returns based on existing holdings, but not ba
 
 Initially built to keep up with earnings calls for companies in my portfolio and under evaluation. It became a full research dashboard and financial database.
 
-It pulls filings and financial data from the U.S. Securities and Exchange Commission (SEC) and Financial Modeling Prep (FMP). The data layer is intentionally obsessive: it ranks sources, validates numbers, tracks restatements, and keeps the source behind each figure. Large language model (LLM) analysis sits on top, covering earnings, thesis tracking, valuation, bear cases, and research chat.
+It pulls filings and financial data from SEC, FMP, and company investor relations website. The data layer is intentionally obsessive: it ranks sources, validates numbers, tracks restatements, and keeps the source behind each figure. LLM analysis sits on top, covering earnings, thesis tracking, valuation, bear cases, and research chat.
 
 ## Date Suggester
 
 I got tired of making the same "what should we do this weekend?" decision from scratch. It scans our calendars to build a repository of places we've been, then ranks new options based on recency, weather, budget, distance, and our preferences.
 
-It builds a ranked digest weekly and emails me when it's ready. It finds windows for quarterly retreats and helps plan trips, covering seasonality, budgets, transit, work conflicts, and booking status.
+It builds a ranked digest weekly and emails me 1x/week. It helps plan trips, covering seasonality, budgets, transit, work conflicts, and booking status.
 
 ## Angel Memos
 
@@ -26,4 +26,4 @@ It walks through each part of diligence, gives me a place to layer in my own not
 
 ## Demos
 
-Short YouTube demos are next. Each one will show the tool working, explain one design choice, and say what is still broken.
+Short YouTube demos are next. Each one will show the tool working and explain design choices.

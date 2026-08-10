@@ -2,6 +2,29 @@
 
 Use this reference to calibrate decisions, not to copy phrases mechanically.
 
+## Content selection matters more than sentence polish
+
+The Artifacts-page revisions showed the most important style rule: Bhanu cuts true
+details when they are not central.
+
+| Model draft | Bhanu's edit | Lesson |
+|---|---|---|
+| "U.S. Securities and Exchange Commission (SEC) and Financial Modeling Prep (FMP)" | "SEC, FMP, and company investor relations website" | Keep incidental source names short. The reader does not need the vendor explainer to understand the system. |
+| "It builds a ranked digest weekly and emails me when it's ready. It finds windows for quarterly retreats…" | "It builds a ranked digest weekly and emails me 1x/week. It helps plan trips…" | Prefer exact cadence to conversational filler. Remove a real feature when it distracts from the main job. |
+| "Each one will show the tool working, explain one design choice, and say what is still broken." | "Each one will show the tool working and explain design choices." | Do not force vulnerability, status, or a credibility ritual into every description. |
+
+Other edits made the same point. "These are tools I actually use" became the less
+polished "Some tools I've built." A generic story about apps hiding the math became
+the more precise distinction between current holdings and portfolio composition
+over time. The writing got more specific without getting more explanatory.
+
+When revising user-written copy:
+
+- Treat deletions as decisions, not gaps.
+- Keep domain shorthand when it is how Bhanu naturally names the thing.
+- Let a compact factual phrase such as `1x/week` beat a smoother sentence.
+- Stop after the facts land. Do not add a moral, status report, or proof of rigor.
+
 ## What already sounds right
 
 ### Point first
@@ -36,11 +59,11 @@ not an "AI-powered research ecosystem."
 ### Compressed project setup
 
 > Initially built to keep up with earnings calls for companies in the portfolio
-> and under evaluation. Evolved into a full fundamental research dashboard.
+> and under evaluation. It became a full research dashboard and financial database.
 
 Why it works: it says where the project started and where it ended without walking
-through every intermediate feature. The slightly conversational compression is
-part of the voice; do not expand it into a product brochure.
+through every intermediate feature. It uses plain internal language instead of
+turning the evolution into a product story.
 
 ## What does not sound right
 

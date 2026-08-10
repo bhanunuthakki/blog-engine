@@ -10,6 +10,18 @@ Make the point fast. Keep the proof. Cut everything that exists to sound polishe
 Read [references/voice-corpus.md](references/voice-corpus.md) before drafting or
 rewriting public copy. Use it to calibrate judgment, not to imitate phrases.
 
+## Authority and selection
+
+- Latest user revision outranks an earlier model draft, an older example, and a
+  generic style rule. Preserve the user's selections and omissions unless they
+  create a factual, privacy, or comprehension problem.
+- Compare the user's edit with the prior draft before writing again. Infer what
+  the user removed, compressed, made more technical, or made more exact.
+- Do not restore a true detail merely for completeness. A feature earns space only
+  if it explains the main job, the real differentiator, or the outcome.
+- Choose content before polishing sentences. Bhanu's voice comes as much from what
+  he leaves out as from his word choice.
+
 ## Non-negotiables
 
 - Preserve every material fact, number, date, name, link, caveat, and level of
@@ -19,8 +31,11 @@ rewriting public copy. Use it to calibrate judgment, not to imitate phrases.
   sentence joined by commas, dashes, or a semicolon.
 - Use everyday words, contractions, active voice, and first person when the format
   allows it.
-- Explain a term of art in the same sentence it first appears. Spell out an
-  acronym on first use.
+- Assume a smart, context-aware reader. Keep familiar or incidental shorthand such
+  as `SEC`, `FMP`, `LLM`, or `1x/week` when expanding it would interrupt the point.
+  Explain a term only when understanding the sentence depends on it.
+- Keep Bhanu's working vocabulary. Do not translate precise technical language
+  into generic product prose just to make it sound smoother.
 - Prefer a number, name, date, product action, or observed result to an adjective.
 - Keep uncertainty specific. Say what could go wrong and what evidence would
   change the view.
@@ -56,10 +71,11 @@ A ceiling is not a target. Stop when the point is complete.
 
 Write down, without polishing:
 
-1. The conclusion or reason this exists.
-2. The two or three facts that earn the conclusion.
-3. The specific risk, limitation, or unfinished part.
-4. Any exact wording or link that must survive.
+1. The personal friction or original job, if it is known.
+2. What the thing does now.
+3. One or two details that explain its real edge: inputs, logic, output, or cadence.
+4. Any exact wording, shorthand, number, or link that must survive.
+5. A risk or limitation only when the format or source makes it central.
 
 If the source does not contain enough evidence, flag the gap. Do not hide it with
 adjectives.
@@ -73,22 +89,29 @@ Use this order unless the format clearly needs another:
 3. Why it matters.
 4. Risk, open question, or next step.
 
-Project copy should answer: what problem annoyed me, what the tool does now, one
-real design choice, and what is still private or unfinished. A company investing
-note should state the bet, outcome math, evidence, and disconfirming risk. An
-evergreen investing page should state the principles, link to time-stamped reports,
-and name portfolio-level risks. Do not put allocations on an evergreen page if
-they need manual updates.
+Project copy should normally state the original job, what the tool became, and the
+few inputs or capabilities that explain why it is different. Do not force a design
+choice, status note, risk, or closing lesson. Do not add "what is still broken,"
+public/private status, or a technical virtue merely to make the project sound more
+credible.
+
+A company investing note should state the bet, outcome math, evidence, and
+disconfirming risk. An evergreen investing page should state the principles, link
+to time-stamped reports, and name portfolio-level risks. Do not put allocations on
+an evergreen page if they need manual updates.
 
 ### 4. Compress without flattening the voice
 
 Cut in this order:
 
 1. Throat-clearing and repeated conclusions.
-2. Adjectives that do not change the claim.
-3. Background the reader does not need for the next sentence.
-4. Forced three-item lists and section summaries.
-5. Technical detail that does not explain a decision.
+2. Accurate but secondary features that turn the copy into an inventory.
+3. Interpretive endings that tell the reader why the preceding facts matter.
+4. Status notes, credibility signals, and implementation virtues that are not the
+   point.
+5. Acronym expansions and transitions that add words without adding meaning.
+6. Adjectives, background, forced lists, and technical detail that do not change
+   the claim.
 
 Keep the aside, joke, or blunt sentence when it reveals a real opinion. Succinct
 does not mean sterile.

@@ -59,14 +59,20 @@ These are requirements, not preferences:
   semicolon, split it into two.
 - **Everyday words.** Use "use" not "utilize", "buy" not "acquire", "start" not
   "commence", "about" not "regarding", "so" not "thus".
-- **Explain any term of art in the same sentence you first use it** — "NRR (whether
-  existing customers spend more each year)". If it can't be explained in a clause,
-  cut it or rewrite around it.
-- **Spell out acronyms on first use.** Every post. Assume no prior post was read.
+- **Explain a term only when the point depends on it.** "NRR (whether existing
+  customers spend more each year)" needs help when retention is the argument.
+  Incidental source or tool names do not.
+- **Do not expand an acronym when the expansion does not help the reader.** SEC,
+  FMP, LLM, and similar working shorthand can stay short when the reader only needs
+  to know they are sources or tools.
 - **Contractions.** "It's", "doesn't", "I'd". Always.
 - **Active voice, first person.** "I built this because…" not "This was built to…"
 - **Concrete beats abstract.** A number, a name, or a date beats an adjective every
   time. "50,000 SKUs vs 4,000" lands; "a much smaller selection" doesn't.
+- **Selection is part of the voice.** An accurate detail does not automatically
+  deserve space. Keep the main job, the real differentiator, and the outcome. If
+  Bhanu deletes a secondary feature, status note, design ritual, or closing lesson,
+  do not restore it for completeness.
 - **Say the point first, then explain it.** Never build up to the conclusion.
 - **Cut throat-clearing.** Delete "It's worth noting that", "In today's world",
   "At the end of the day", "Let's dive in".

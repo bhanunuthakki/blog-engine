@@ -11,6 +11,8 @@ from typing import Any
 
 SCRIPT = Path(".agents/skills/plain-writing/scripts/check_plain_writing.py")
 SKILL = Path(".agents/skills/plain-writing/SKILL.md")
+VOICE_CORPUS = Path(".agents/skills/plain-writing/references/voice-corpus.md")
+PROJECT_RULES = Path("AGENTS.md")
 
 
 def _analyze(text: str, *, format_name: str | None = None) -> dict[str, Any]:
@@ -29,6 +31,20 @@ def test_skill_is_complete_and_compatibility_entry_exists() -> None:
     assert "references/voice-corpus.md" in content
     assert "check_plain_writing.py" in content
     assert Path(".claude/skills/plain-writing/SKILL.md").is_file()
+
+
+def test_skill_encodes_lessons_from_user_edits() -> None:
+    skill = SKILL.read_text(encoding="utf-8")
+    corpus = VOICE_CORPUS.read_text(encoding="utf-8")
+    project_rules = PROJECT_RULES.read_text(encoding="utf-8")
+    normalized_skill = " ".join(skill.split())
+
+    assert "Latest user revision outranks" in skill
+    assert "Do not restore a true detail merely for completeness" in skill
+    assert "Do not force a design choice, status note, risk, or closing lesson" in normalized_skill
+    assert "Keep familiar or incidental shorthand" in skill
+    assert "Content selection matters more than sentence polish" in corpus
+    assert "Do not expand an acronym when the expansion does not help the reader" in project_rules
 
 
 def test_short_concrete_copy_passes_without_findings() -> None:
