@@ -10,7 +10,7 @@ I built it because most apps show returns based on existing holdings, but not ba
 
 Initially built to keep up with earnings calls for companies in my portfolio and under evaluation. It became a full research dashboard and financial database.
 
-It pulls filings and financial data from SEC, FMP, and company investor relations website. The data layer is intentionally obsessive: it ranks sources, validates numbers, tracks restatements, and keeps the source behind each figure. LLM analysis sits on top, covering earnings, thesis tracking, valuation, bear cases, and research chat.
+It pulls filings and financial data from the SEC, financial databases, and investor sites. Python validates the numbers and tracks every source, while the model reads transcripts to check if management kept past promises and writes a one-page morning summary.
 
 ## Date Suggester
 
