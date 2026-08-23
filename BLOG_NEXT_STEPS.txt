@@ -1,5 +1,5 @@
 BLOG NEXT STEPS
-Last updated: 2026-08-10
+Last updated: 2026-08-23
 
 Use this file as the operational checklist. ROADMAP.md contains the longer
 rationale and post backlog.
@@ -15,159 +15,110 @@ OPERATING RULES
 - Do not create content merely to maintain a cadence.
 
 
-COMPLETED
+COMPLETED (2026-08-23)
 
 [x] Replace the outdated Gems/grades table with actual projects.
 [x] Add Portfolio Tracker, Earnings Summary, Date Suggester, and Angel Memos to
     the Artifacts page.
 [x] Rewrite the Investing page as an evergreen statement of process instead of a
     manually maintained allocation table.
-[x] Keep the anonymized public investing-memo link.
 [x] Build and harden the $plain-writing skill from Bhanu's edits.
-[x] Put Blog Engine in a private GitHub repository and protect local credentials
-    and sync state from commits.
+[x] Verify and connect WordPress REST API on macOS (authenticated as bhanumufcpraneeth@gmail.com).
+[x] Update src/blog_engine/config.py for cross-platform macOS/Windows credentials pathing.
+[x] Audit full historical commit diffs (0 secrets/PII in git logs).
+[x] Publish 6 public GitHub repositories:
+    - https://github.com/bhanunuthakki/portfolio-tracker
+    - https://github.com/bhanunuthakki/earnings-summary
+    - https://github.com/bhanunuthakki/angel-memos
+    - https://github.com/bhanunuthakki/blog-engine
+    - https://github.com/bhanunuthakki/xr-glasses-dev-guide
+    - https://github.com/bhanunuthakki/agent-instructions
+    - https://github.com/bhanunuthakki/reading-companion-app
+[x] Preserve strict private status for sensitive repos (wealthplan, date-suggester,
+    bhanu-resume-system, huntdesk, myclaw, harness, repo-maintenance).
+[x] Add scripts/run_demo_backend.py to portfolio-tracker to run an in-memory
+    synthetic database fixture (zero real balances or accounts).
+[x] Pass full toolchain verification across blog-engine (248 tests, pyright 0 errors, ruff clean).
 
 
-DO NEXT
+PRIORITIZED ACTION PLAN
 
-1. RECORD THE FIRST PROJECT DEMOS
+--------------------------------------------------------------------------------
+[P1] RECORD PORTFOLIO TRACKER DEMO (3 MINUTES)
+--------------------------------------------------------------------------------
+Relevance:
+Core builder evidence for the blog; proves working code without exposing financial balances.
 
-Start with:
-  a. Portfolio Tracker
-  b. Earnings Summary
+Prerequisites:
+None (Demo engine and test fixtures are fully built).
 
-Then record Date Suggester and Angel Memos when there is a useful workflow or
-decision to show.
+Tactical Setup & Execution:
+1. Terminal 1 (Demo Backend):
+   cd /Applications/portfolio-tracker && .venv/bin/python scripts/run_demo_backend.py
+   (Seeds demo_portfolio.db with synthetic data and runs FastAPI on :8000)
 
-Each video:
-- 3-5 minutes.
-- About 20 seconds on why the tool exists.
-- Show the tool working on real or safely scrubbed data.
-- Explain only the design choices that materially help the viewer understand it.
-- Upload publicly to YouTube.
-- Add the YouTube URL to drafts/artifacts-page.md and the live Artifacts page.
-- Keep 2-3 short paragraphs around the embed for people who will not watch.
+2. Terminal 2 (Frontend):
+   cd /Applications/portfolio-tracker/frontend && npm run dev
+   (Opens Vite dev server on http://localhost:5173)
 
-Redaction gate before every upload:
-- Remove dollar balances and position sizes.
-- Decide deliberately whether holdings or the coverage universe can appear.
-- Clear terminal history, API keys, tokens, .env output, and personal file paths.
-- Use a clean browser profile with no personal tabs, bookmarks, or account email.
-- Turn off notifications.
-- Watch the entire video full-screen before uploading. YouTube cannot edit a
-  leaked frame after publication.
+3. Inbuilt Native macOS Screen Recording Setup:
+   - Launch QuickTime Player -> File -> New Movie Recording (webcam bubble).
+   - View -> Float on Top -> resize and position in corner.
+   - Press Cmd + Shift + 5 -> Options -> Select Mic -> Record Entire Screen.
+   - Zoom browser to 125% (Cmd + +) so numbers are readable on mobile.
 
+4. Pinned 180-Second Talk Track:
+   - 0:00 - 0:20 (20s - Camera): "Most apps show returns on current holdings. I built this to calculate true money-weighted returns over time against the S&P and Nasdaq."
+   - 0:20 - 1:50 (90s - Screen): Walk through interactive dashboard, asset allocations, beta vs SPY/QQQ, and cash-flow matched returns.
+   - 1:50 - 2:30 (40s - Architecture): Explain time-weighted cash flow matching vs naive daily balance snapshots.
+   - 2:30 - 3:00 (30s - Honesty): Note what is still being refined (e.g. illiquid asset modeling).
 
-2. BUILD PUBLIC PORTFOLIO REPORTING IN EARNINGS SUMMARY
+--------------------------------------------------------------------------------
+[P1] POST-RECORDING REDACTION GATE & YOUTUBE UPLOAD (10 MINUTES)
+--------------------------------------------------------------------------------
+Relevance:
+Prevents unrecoverable video leaks. YouTube cannot edit a leaked frame after upload.
 
-Create a public-safe export rather than maintaining the Investing page manually.
+Prerequisites:
+P1 recording saved to Desktop.
 
-Monthly snapshot:
-- Snapshot date.
-- Public holdings and weights, if deliberately approved for disclosure.
-- Performance versus the chosen benchmark.
-- Current thesis in a few lines.
-- What changed since the previous snapshot.
-- Any thesis break or risk that needs attention.
+Tactical Execution:
+1. Watch the saved .mov file at 1x playback.
+2. Confirm:
+   - Zero real dollar balances or personal bank/brokerage account IDs appear.
+   - Zero notification popups or private file paths shown in terminal.
+3. Upload to YouTube as Public.
+4. Copy the public YouTube watch URL.
 
-Quarterly report:
-- What worked.
-- What did not.
-- Material thesis changes.
-- Portfolio-level risks and concentration.
-- Performance context, not just a return number.
+--------------------------------------------------------------------------------
+[P2] UPDATE LIVE ARTIFACTS PAGE DRAFT (5 MINUTES)
+--------------------------------------------------------------------------------
+Relevance:
+Embeds the interactive video directly on bhanunuthakki.com/artifacts.
 
-Privacy rules:
-- Never expose dollar balances, cost basis, account names, tax lots, or private
-  transaction details.
-- Generate the report automatically, but require a manual privacy review before
-  public release.
-- Give the reports a stable public index URL.
-- Once the index exists, add it to drafts/investing-page.md and the live Investing
-  page.
+Prerequisites:
+YouTube URL from P1.
 
+Tactical Execution:
+1. Paste the bare YouTube URL into drafts/artifacts-page.md under ## Portfolio Tracker.
+2. Update WordPress draft page via REST API client or blog-engine tooling.
 
-3. FINISH THE BUILDER-EVIDENCE SURFACES
+--------------------------------------------------------------------------------
+[P3] RECORD EARNINGS SUMMARY DEMO (3 MINUTES)
+--------------------------------------------------------------------------------
+Relevance:
+Highlights the SEC EDGAR/FMP financial database and 3-layer deterministic LLM architecture.
 
-- Verify that the Earnings Summary GitHub repository has a one-line description
-  that reflects the financial database and research system, not only earnings.
-- Add GitHub to the Contact page and footer.
-- Add the YouTube channel to Contact/footer after the first demo is public.
-- Add an RSS link so readers can follow without a newsletter.
-- Fix the theme header's small horizontal overflow on mobile. The page bodies fit
-  at 390 px; the full-width header still creates a scrollbar.
+Prerequisites:
+P2 completed.
 
+Tactical Execution:
+- Walk through morning pipeline brief report on screen.
+- Talk track focus: "Why spreadsheets are the wrong tool for daily investment research; deterministic Python dataclasses + schema-validated LLM qualitative synthesis."
 
-4. CONDENSE FUTURE PUBLIC INVESTING MEMOS UPSTREAM
-
-Make the change in Angel Memos, where the anonymized public derivative is created.
-Blog Engine must never read the confidential source document.
-
-For each new public memo, keep:
-- The decision.
-- Two or three facts that drive it.
-- Outcome or return math when available.
-- The main risk or disconfirming fact.
-
-Cut repeated market descriptions, generic praise, and feature inventories. Use
-$plain-writing before placement. The 15 historical memos remain suppressed and do
-not need to be rewritten for the blog.
-
-
-5. PUBLISH THE H1 2026 READING ROUNDUP
-
-- Review drafts/phase-1-favorite-reads-h1-2026.md.
-- Cover the eight reads rated 8/10 or higher in one post, not eight posts.
-- Mention the 7/10 books and the unfinished book briefly for honesty.
-- Keep one idea that stuck from each work; do not summarize each book.
-- Publish manually.
-- After publication, suppress the covered source entries so blog-sync does not
-  offer duplicate individual posts.
-
-
-CONTENT QUEUE AFTER THE ROUNDUP
-
-1. Angel Memos build log plus demo.
-   Angle: I built a tool that argues against my own investments.
-
-2. Earnings Summary build log plus demo.
-   Pick one direction, not both:
-   - Why a spreadsheet is the wrong tool for repeated financial research.
-   - How the data and LLM analysis are governed and hardened.
-
-3. AI in corporate finance.
-   Build a downloadable task taxonomy showing what can be automated now, what is
-   AI-assisted, and what remains human. This is the highest-value post and should
-   not be rushed.
-
-4. Later options, only when there is genuine interest:
-   - Portfolio Tracker and the right way to benchmark investment performance.
-   - A Blog Engine build log.
-   - Individual book reviews only for a 9/10 that changed something.
-   - H2 2026 reading roundup.
-   - Methane.
-   - Thermal batteries.
-   - Plastics recalibration.
-   - Unit economics of healthcare, higher education, or transit as separate posts.
-
-
-DISTRIBUTION AND FEEDBACK
-
-- Cross-post or summarize strong posts on LinkedIn consistently.
-- Do not build an autonomous content calendar or ideation system.
-- After there is enough traffic to justify it, choose lightweight analytics such
-  as Plausible or Fathom. Avoid adding Google Analytics by default.
-- Use feedback and actual conversations, not post count, as the success measure.
-
-
-ONGOING MAINTENANCE
-
-- Do not launch a wholesale rewrite of the existing blog. The homepage, Contact
-  page, and Subtract First already sound strong.
-- Apply $plain-writing when a page or post is already being touched.
-- Keep drafts/artifacts-page.md and drafts/investing-page.md synchronized with the
-  live pages after manual WordPress edits.
-- Review the Artifacts page when a project materially changes or a demo is added.
-  Do not add grades, Gems, or manually maintained status labels.
-- Keep historical public memo entries suppressed unless Bhanu explicitly chooses
-  one to publish.
+--------------------------------------------------------------------------------
+[P4] CLAIM-BASED BUILD LOG POSTS (1-2 HR / WEEK PACING)
+--------------------------------------------------------------------------------
+1. Angel Memos build log ("I built a tool that argues against my own investments").
+2. Earnings Summary build log ("I look at 28 companies every morning without opening a spreadsheet").
+3. AI in Corporate Finance essay & task taxonomy.

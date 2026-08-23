@@ -1,6 +1,6 @@
 Some tools I've built because spreadsheets, existing products, or vanilla LLM skills didn't fit my use cases.
 
-## Portfolio Tracker
+## [Portfolio Tracker](https://github.com/bhanunuthakki/portfolio-tracker)
 
 It connects to my brokerage accounts and works out what my portfolio actually returned. It matches performance to when money moved, then compares the result with buying the index.
 
@@ -18,7 +18,7 @@ I got tired of making the same "what should we do this weekend?" decision from s
 
 It builds a ranked digest weekly and emails me 1x/week. It helps plan trips, covering seasonality, budgets, transit, work conflicts, and booking status.
 
-## Angel Memos
+## [Angel Memos](https://github.com/bhanunuthakki/angel-memos)
 
 It's a Chrome extension and research pipeline for angel deals. One click on an AngelList page pulls down the deal memo and pitch deck, then starts the research process in a consistent investment-memo format.
 

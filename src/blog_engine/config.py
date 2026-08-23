@@ -16,7 +16,7 @@ from pydantic import BaseModel, ConfigDict, Field
 
 from blog_engine.models import PostStatus
 
-_DEFAULT_WORDPRESS_ENV = Path(r"C:\Users\Bhanu\.gemini\.secrets\wordpress.env")
+_DEFAULT_WORDPRESS_ENV = Path.home() / ".gemini" / ".secrets" / "wordpress.env"
 
 # Doc IDs confirmed against Drive on 2026-07-24.
 _DEFAULT_BOOK_NOTES_DOC_ID = "1Ec-rllS_JbpuunvgSpjfXDhpREHi1iuHyYyGb6CRAR4"
