@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blog Engine & Demo Recording Playbook</title>
+  <style>
+    :root {
+      --bg: #0f172a;
+      --card-bg: #1e293b;
+      --card-border: #334155;
+      --text: #f8fafc;
+      --text-muted: #94a3b8;
+      --accent: #38bdf8;
+      --accent-glow: rgba(56, 189, 248, 0.15);
+      --success: #34d399;
+      --warning: #fbbf24;
+      --code-bg: #090d16;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      padding: 40px 20px;
+    }
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    header {
+      margin-bottom: 40px;
+      border-bottom: 1px solid var(--card-border);
+      padding-bottom: 24px;
+    }
+    .badge {
+      display: inline-block;
+      font-size: 12px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      padding: 4px 10px;
+      border-radius: 9999px;
+      background: rgba(52, 211, 153, 0.15);
+      color: var(--success);
+      border: 1px solid rgba(52, 211, 153, 0.3);
+      margin-bottom: 12px;
+    }
+    h1 {
+      font-size: 32px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 8px;
+    }
+    p.subtitle {
+      color: var(--text-muted);
+      font-size: 16px;
+    }
+    .grid {
+      display: grid;
+      gap: 24px;
+      margin-bottom: 32px;
+    }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 16px;
+      padding: 24px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    }
+    .card h2 {
+      font-size: 20px;
+      font-weight: 600;
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--accent);
+    }
+    .step-num {
+      background: var(--accent);
+      color: var(--bg);
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      font-weight: 700;
+    }
+    .code-block {
+      background: var(--code-bg);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 8px;
+      padding: 14px 16px;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 14px;
+      color: #e2e8f0;
+      position: relative;
+      margin: 10px 0 16px 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .code-block code {
+      word-break: break-all;
+    }
+    .copy-btn {
+      background: #334155;
+      border: none;
+      color: #cbd5e1;
+      font-size: 12px;
+      font-weight: 500;
+      padding: 6px 12px;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .copy-btn:hover {
+      background: var(--accent);
+      color: var(--bg);
+    }
+    .timeline {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      margin-top: 16px;
+    }
+    .timeline-item {
+      display: flex;
+      gap: 16px;
+      padding-left: 8px;
+      border-left: 2px solid var(--accent);
+    }
+    .time-tag {
+      font-family: monospace;
+      font-weight: 700;
+      color: var(--accent);
+      min-width: 90px;
+    }
+    .time-desc h4 {
+      font-size: 15px;
+      margin-bottom: 4px;
+    }
+    .time-desc p {
+      font-size: 14px;
+      color: var(--text-muted);
+    }
+    .checklist {
+      list-style: none;
+      margin-top: 12px;
+    }
+    .checklist li {
+      padding: 8px 0;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 15px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    }
+    .checklist li:last-child {
+      border-bottom: none;
+    }
+    .checklist input[type="checkbox"] {
+      width: 18px;
+      height: 18px;
+      accent-color: var(--success);
+      cursor: pointer;
+    }
+    .status-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 12px;
+      font-size: 14px;
+    }
+    .status-table th, .status-table td {
+      padding: 10px 14px;
+      text-align: left;
+      border-bottom: 1px solid var(--card-border);
+    }
+    .status-table th {
+      color: var(--text-muted);
+      font-weight: 600;
+    }
+    .status-table a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+    .status-table a:hover {
+      text-decoration: underline;
+    }
+    .status-pill {
+      font-size: 11px;
+      font-weight: 600;
+      padding: 2px 8px;
+      border-radius: 9999px;
+    }
+    .pill-public { background: rgba(52, 211, 153, 0.15); color: var(--success); }
+    .pill-private { background: rgba(148, 163, 184, 0.15); color: var(--text-muted); }
+    .callout {
+      background: var(--accent-glow);
+      border-left: 4px solid var(--accent);
+      padding: 14px 18px;
+      border-radius: 0 8px 8px 0;
+      margin: 16px 0;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="badge">Session Ready • Grade A Cleared</div>
+      <h1>Blog Engine & Demo Recording Playbook</h1>
+      <p class="subtitle">Quick reference for launching synthetic demo modes, recording native screencasts, and deploying drafts.</p>
+    </header>
+
+    <div class="grid">
+      <!-- Priority 1: Portfolio Demo -->
+      <div class="card">
+        <h2><span class="step-num">1</span> Launch Portfolio Tracker Demo Mode</h2>
+        <p style="color: var(--text-muted); font-size: 14px; margin-bottom: 12px;">
+          Runs on an isolated, synthetic in-memory database with zero real accounts, holdings, or balances.
+        </p>
+
+        <label style="font-size: 13px; font-weight: 600; color: var(--text-muted);">Terminal 1 (Backend Server):</label>
+        <div class="code-block">
+          <code>cd /Applications/portfolio-tracker && .venv/bin/python scripts/run_demo_backend.py</code>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+
+        <label style="font-size: 13px; font-weight: 600; color: var(--text-muted);">Terminal 2 (Frontend Client):</label>
+        <div class="code-block">
+          <code>cd /Applications/portfolio-tracker/frontend && npm run dev</code>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+
+        <div class="callout">
+          <strong>Browser Tip:</strong> Open <code>http://localhost:5173</code> and press <code>Cmd + +</code> to zoom to 125% so charts and numbers are easily readable on mobile devices.
+        </div>
+      </div>
+
+      <!-- Native macOS Recording -->
+      <div class="card">
+        <h2><span class="step-num">2</span> 10-Second Inbuilt macOS Recording Setup</h2>
+        <p style="color: var(--text-muted); font-size: 14px;">100% native, zero lag, hardware-accelerated. No third-party software needed.</p>
+
+        <ul class="checklist">
+          <li>
+            <input type="checkbox" id="c1">
+            <label for="c1"><strong>Camera Bubble:</strong> QuickTime Player → File → New Movie Recording → View → <em>Float on Top</em> (drag to corner)</label>
+          </li>
+          <li>
+            <input type="checkbox" id="c2">
+            <label for="c2"><strong>Screen Record:</strong> Press <code>Cmd + Shift + 5</code> → Select Microphone → Click <em>Record Entire Screen</em></label>
+          </li>
+          <li>
+            <input type="checkbox" id="c3">
+            <label for="c3"><strong>OS Privacy:</strong> Turn on macOS Focus Mode / Do Not Disturb</label>
+          </li>
+          <li>
+            <input type="checkbox" id="c4">
+            <label for="c4"><strong>Stop & Save:</strong> Press <code>Cmd + Ctrl + Esc</code> (saves directly to Desktop)</label>
+          </li>
+        </ul>
+      </div>
+
+      <!-- 3-Min Talk Track -->
+      <div class="card">
+        <h2><span class="step-num">3</span> Pinned 3-Minute Talk Track (180s)</h2>
+        <div class="timeline">
+          <div class="timeline-item">
+            <div class="time-tag">0:00 - 0:20</div>
+            <div class="time-desc">
+              <h4>The Hook & Frustration (Camera)</h4>
+              <p>"Most apps show returns on existing holdings. I built this to calculate true money-weighted returns over time against the S&P and Nasdaq."</p>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="time-tag">0:20 - 1:50</div>
+            <div class="time-desc">
+              <h4>Interactive Walkthrough (Screen)</h4>
+              <p>Walk through dashboard asset allocation, portfolio beta vs benchmarks, and cash-flow matched return calculations.</p>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="time-tag">1:50 - 2:30</div>
+            <div class="time-desc">
+              <h4>Architecture Tradeoff (Screen)</h4>
+              <p>Explain time-weighted cash flow matching vs naive daily balance snapshots.</p>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="time-tag">2:30 - 3:00</div>
+            <div class="time-desc">
+              <h4>What's Still Broken / Honest Close (Camera)</h4>
+              <p>State what you're refining next (e.g. illiquid asset modeling). High credibility anchor.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Post-Recording & Upload -->
+      <div class="card">
+        <h2><span class="step-num">4</span> Verification & YouTube Publish</h2>
+        <ul class="checklist">
+          <li>
+            <input type="checkbox" id="p1">
+            <label for="p1">Watch saved Desktop <code>.mov</code> at 1x playback. Confirm zero private data or notifications leaked.</label>
+          </li>
+          <li>
+            <input type="checkbox" id="p2">
+            <label for="p2">Upload video to YouTube as <strong>Public</strong>.</label>
+          </li>
+          <li>
+            <input type="checkbox" id="p3">
+            <label for="p3">Copy public YouTube URL and drop in next session to update the live Artifacts page draft.</label>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Repository Status Matrix -->
+      <div class="card">
+        <h2>Repository Status Matrix</h2>
+        <table class="status-table">
+          <thead>
+            <tr>
+              <th>Repository</th>
+              <th>Visibility</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><a href="https://github.com/bhanunuthakki/portfolio-tracker" target="_blank">portfolio-tracker</a></td>
+              <td><span class="status-pill pill-public">Public</span></td>
+              <td>Demo launcher committed; ready for screencast</td>
+            </tr>
+            <tr>
+              <td><a href="https://github.com/bhanunuthakki/earnings-summary" target="_blank">earnings-summary</a></td>
+              <td><span class="status-pill pill-public">Public</span></td>
+              <td>Live & linked on blog</td>
+            </tr>
+            <tr>
+              <td><a href="https://github.com/bhanunuthakki/angel-memos" target="_blank">angel-memos</a></td>
+              <td><span class="status-pill pill-public">Public</span></td>
+              <td>Clean code; Drive isolation active</td>
+            </tr>
+            <tr>
+              <td><a href="https://github.com/bhanunuthakki/blog-engine" target="_blank">blog-engine</a></td>
+              <td><span class="status-pill pill-public">Public</span></td>
+              <td>macOS WP REST auth verified; tests passing</td>
+            </tr>
+            <tr>
+              <td><a href="https://github.com/bhanunuthakki/xr-glasses-dev-guide" target="_blank">xr-glasses-dev-guide</a></td>
+              <td><span class="status-pill pill-public">Public</span></td>
+              <td>17 technical reference guides published</td>
+            </tr>
+            <tr>
+              <td><a href="https://github.com/bhanunuthakki/agent-instructions" target="_blank">agent-instructions</a></td>
+              <td><span class="status-pill pill-public">Public</span></td>
+              <td>Multi-agent contracts & procedures public</td>
+            </tr>
+            <tr>
+              <td><a href="https://github.com/bhanunuthakki/reading-companion-app" target="_blank">reading-companion-app</a></td>
+              <td><span class="status-pill pill-public">Public</span></td>
+              <td>TS core + static web demo public</td>
+            </tr>
+            <tr>
+              <td>wealthplan, date-suggester, huntdesk, resume-system, myclaw</td>
+              <td><span class="status-pill pill-private">Strict Private</span></td>
+              <td>Sealed & protected</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function copyCode(btn) {
+      const code = btn.parentElement.querySelector('code').innerText;
+      navigator.clipboard.writeText(code).then(() => {
+        const orig = btn.innerText;
+        btn.innerText = 'Copied!';
+        setTimeout(() => btn.innerText = orig, 2000);
+      });
+    }
+
+    // Persist checklist state
+    document.querySelectorAll('.checklist input[type="checkbox"]').forEach(cb => {
+      const saved = localStorage.getItem('guide_' + cb.id);
+      if (saved === 'true') cb.checked = true;
+      cb.addEventListener('change', () => {
+        localStorage.setItem('guide_' + cb.id, cb.checked);
+      });
+    });
+  </script>
+</body>
+</html>
