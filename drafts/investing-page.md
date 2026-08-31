@@ -1,4 +1,4 @@
-Investing is how I test where I think technology creates value. I keep my philosophy here and publish anonymized private-market memos [in this public document](https://docs.google.com/document/d/1nyFj17M4kktlHD028AVF9D-8zeyGRGKC-MXzHNfXA80/edit?tab=t.0).
+Investing is how I test where I think technology creates value. I keep my philosophy here and publish anonymized private-market memos in the configured public document.
 
 I care more about whether the logic holds up than whether the price agrees next month. If you see a hole, tell me.
 

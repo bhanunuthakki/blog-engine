@@ -161,7 +161,7 @@ or create a WordPress draft before explicit approval.
 ### 5. Place after approval
 
 Append the approved entry to the top of `Book & Podcast Notes (Master)`, document
-ID `1Ec-rllS_JbpuunvgSpjfXDhpREHi1iuHyYyGb6CRAR4`, using
+  the document ID from `BLOG_ENGINE_BOOK_NOTES_DOC_ID`, using
 `blog_engine.google_docs.append_under_heading`. It is revision-guarded and refuses
 duplicate headings.
 

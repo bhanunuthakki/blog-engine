@@ -18,9 +18,9 @@ from blog_engine.models import PostStatus
 
 _DEFAULT_WORDPRESS_ENV = Path.home() / ".gemini" / ".secrets" / "wordpress.env"
 
-# Doc IDs confirmed against Drive on 2026-07-24.
-_DEFAULT_BOOK_NOTES_DOC_ID = "1Ec-rllS_JbpuunvgSpjfXDhpREHi1iuHyYyGb6CRAR4"
-_DEFAULT_PUBLIC_MEMOS_DOC_ID = "1nyFj17M4kktlHD028AVF9D-8zeyGRGKC-MXzHNfXA80"
+# Document identifiers are local deployment configuration, never source code.
+_DEFAULT_BOOK_NOTES_DOC_ID = "configure-book-notes-doc-id"
+_DEFAULT_PUBLIC_MEMOS_DOC_ID = "configure-public-memos-doc-id"
 
 # Headings in the Book & Podcast Notes doc that are structure, not entries.
 _DEFAULT_BOOK_NOTES_SKIP_HEADINGS = ("How I Generate Notes & Themes",)
@@ -53,7 +53,7 @@ class Settings(BaseModel):
     public_memos_entry_level: int = Field(default=4, ge=1, le=6)
 
     public_memos_doc_url: str = Field(
-        default="https://docs.google.com/document/d/1nyFj17M4kktlHD028AVF9D-8zeyGRGKC-MXzHNfXA80/edit",
+        default="configure-public-memos-doc-url",
         min_length=1,
     )
     """Where an investment post sends the reader for the full memo.
@@ -87,8 +87,16 @@ def config_dir() -> Path:
 def load_settings() -> Settings:
     """Read `config.toml` if present, else return defaults."""
     path = config_dir() / _DEFAULT_CONFIG_FILENAME
-    if not path.is_file():
-        return Settings()
-    with path.open("rb") as f:
-        raw = tomllib.load(f)
+    raw: dict[str, object] = {}
+    if path.is_file():
+        with path.open("rb") as f:
+            raw = tomllib.load(f)
+    for env_name, field_name in {
+        "BLOG_ENGINE_WORDPRESS_ENV_PATH": "wordpress_env_path",
+        "BLOG_ENGINE_BOOK_NOTES_DOC_ID": "book_notes_doc_id",
+        "BLOG_ENGINE_PUBLIC_MEMOS_DOC_ID": "public_memos_doc_id",
+        "BLOG_ENGINE_PUBLIC_MEMOS_DOC_URL": "public_memos_doc_url",
+    }.items():
+        if value := os.environ.get(env_name):
+            raw[field_name] = value
     return Settings.model_validate(raw)

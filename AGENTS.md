@@ -118,8 +118,8 @@ project's life", and so on.
 
 | Source | Doc | Becomes |
 |---|---|---|
-| Book & Podcast Notes (Master) | `1Ec-rllS_JbpuunvgSpjfXDhpREHi1iuHyYyGb6CRAR4` | one post per entry, category `books` |
-| [Public] Investing Memos | `1nyFj17M4kktlHD028AVF9D-8zeyGRGKC-MXzHNfXA80` | one post per entry, category `investing` |
+| Book & Podcast Notes (Master) | local `BLOG_ENGINE_BOOK_NOTES_DOC_ID` setting | one post per entry, category `books` |
+| [Public] Investing Memos | local `BLOG_ENGINE_PUBLIC_MEMOS_DOC_ID` setting | one post per entry, category `investing` |
 
 **Scoping to the `Memos` container is a privacy boundary, not a parsing
 convenience.** The public memos doc has an H1 of `Private Investing` and carries
@@ -222,8 +222,8 @@ canonical file completely before acting.
 ## Working here
 
 - The site runs Gutenberg block markup, not classic HTML. Never post raw HTML.
-- Credentials come from `C:\Users\bhanu\.gemini\.secrets\wordpress.env` and are
-  never echoed, logged, or committed. The app password is a `SecretStr`.
+- Credentials come from a local configured environment file and are never echoed,
+  logged, or committed. The app password is a `SecretStr`.
 - Google Docs auth reuses the `angel-memos` OAuth client (same `documents`
   scope), so there is no second authorization to perform.
 - `blog-engine sync` defaults to `--dry-run`. Read the decision table before

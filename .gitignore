@@ -18,3 +18,10 @@ credentials.json
 google-token.json
 *.env
 !*.env.example
+
+# Private source exports and writing corpora stay outside the public repo.
+private/
+corpus/
+sources-private/
+drafts/private/
+/BLOG_NEXT_STEPS.txt

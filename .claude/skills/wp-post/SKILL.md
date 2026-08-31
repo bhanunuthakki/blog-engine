@@ -12,7 +12,7 @@ before writing anything. Before drafting or revising public copy, read
 ## Setup facts
 
 - Site: `https://www.bhanunuthakki.com`, REST base `/wp-json/wp/v2`
-- Credentials: `C:\Users\bhanu\.gemini\.secrets\wordpress.env` (site URL,
+- Credentials: the local path configured by `BLOG_ENGINE_WORDPRESS_ENV_PATH` (site URL,
   username, application password). Loaded by
   `blog_engine.credentials.load_wordpress_credentials`.
 - Auth is HTTP Basic with the application password. It goes in the

@@ -26,7 +26,7 @@ python -m venv .venv
 .venv/Scripts/pip install -e ".[dev]"
 ```
 
-**WordPress.** Credentials live at `C:\Users\bhanu\.gemini\.secrets\wordpress.env`
+**WordPress.** Credentials come from a local configured environment file
 (site URL, username, application password). Generate the application password at
 WP Admin → Users → Profile → Application Passwords. Never commit this file.
 
@@ -35,6 +35,11 @@ holds the `documents` scope this one needs, so there's nothing new to authorize.
 If you ever need a separate client, drop `credentials.json` in
 `%USERPROFILE%\.config\blog-engine\` and authorize once from an interactive
 terminal.
+
+Document IDs and reader links are deployment settings. Set
+`BLOG_ENGINE_BOOK_NOTES_DOC_ID`, `BLOG_ENGINE_PUBLIC_MEMOS_DOC_ID`, and
+`BLOG_ENGINE_PUBLIC_MEMOS_DOC_URL` locally; they are deliberately absent from
+this public repository.
 
 Verify both:
 
