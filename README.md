@@ -136,6 +136,12 @@ its identity across edits.
 Tests are pure-core and hit no network. Integration tests touch the real site and
 real docs and are skipped by default — opt in with `pytest -m integration`.
 
+Enable the local public-boundary check before pushing:
+
+```bash
+git config core.hooksPath .githooks
+```
+
 ## Out of scope
 
 The **private** memo doc is never read; anonymization is guaranteed upstream by

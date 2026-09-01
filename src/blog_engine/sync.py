@@ -51,6 +51,10 @@ class UnknownSuppressionKeyError(RuntimeError):
     silently no-op on."""
 
 
+class UpstreamApprovalError(RuntimeError):
+    """Raised when an angel memo lacks a valid upstream privacy approval."""
+
+
 class WordPressPost(Protocol):
     """The subset of `wordpress.WPPost` that `execute` reads."""
 
@@ -192,6 +196,12 @@ def execute(
         draft, source, raw_heading = draft_by_key[decision.key]
         new_hash = content_hash(draft.markdown)
 
+        if source == SourceKind.ANGEL_PUBLIC and decision.action in {
+            SyncAction.CREATE,
+            SyncAction.UPDATE_DRAFT,
+        }:
+            _require_upstream_approval(draft)
+
         if decision.action == SyncAction.CREATE:
             existing_post = client.get_post_by_slug(draft.slug)
 
@@ -273,6 +283,19 @@ def execute(
         report.append(f"UPDATE  {decision.title}: updated post #{post.id}.")
 
     return ledger.model_copy(update={"entries": entries}), report
+
+
+def _require_upstream_approval(draft: PostDraft) -> None:
+    """Require the 256-bit approval receipt carried by the upstream doc."""
+    value = draft.upstream_approval_sha256
+    if (
+        value is None
+        or len(value) != 64
+        or any(char not in "0123456789abcdef" for char in value.lower())
+    ):
+        raise UpstreamApprovalError(
+            "angel public memo lacks a valid upstream privacy approval; refusing to create/update a draft"
+        )
 
 
 @dataclass(frozen=True)

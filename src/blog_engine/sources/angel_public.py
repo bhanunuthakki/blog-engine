@@ -106,6 +106,12 @@ def parse_public_memos(paragraphs: list[DocParagraph], settings: Settings) -> li
             entry.date_label = text.removeprefix("Date:").strip()
             continue
 
+        if text.lower().startswith("public approval: sha256:"):
+            approval = text.split(":", 2)[-1].strip()
+            if re.fullmatch(r"[0-9a-fA-F]{64}", approval):
+                entry.upstream_approval_sha256 = approval.lower()
+            continue
+
         if para.bullet_depth is not None:
             if section is not None:
                 section.bullets.append(Bullet(text=text, depth=min(para.bullet_depth, 3)))
@@ -173,6 +179,7 @@ class _MemoBuilder:
     category_descriptor: str
     stage_label: str
     date_label: str | None = None
+    upstream_approval_sha256: str | None = None
     sections: list[MemoSection] = field(default_factory=list[MemoSection])
 
     def build(self) -> PublicMemoEntry:
@@ -181,6 +188,7 @@ class _MemoBuilder:
             category_descriptor=self.category_descriptor,
             stage_label=self.stage_label,
             date_label=self.date_label,
+            upstream_approval_sha256=self.upstream_approval_sha256,
             sections=tuple(self.sections),
         )
 
