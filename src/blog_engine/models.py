@@ -161,6 +161,7 @@ class PublicMemoEntry(BaseModel):
     """The `Date: <Month Year>` line's value."""
 
     sections: tuple[MemoSection, ...] = ()
+    upstream_approval_sha256: str | None = Field(default=None, min_length=64, max_length=64)
 
 
 # ---------------------------------------------------------------------------
@@ -183,6 +184,7 @@ class PostDraft(BaseModel):
     excerpt: str = ""
     category_slugs: tuple[str, ...] = ()
     tag_slugs: tuple[str, ...] = ()
+    upstream_approval_sha256: str | None = Field(default=None, min_length=64, max_length=64)
 
 
 # ---------------------------------------------------------------------------

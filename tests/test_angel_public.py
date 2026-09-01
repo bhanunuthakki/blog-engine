@@ -131,6 +131,19 @@ def test_split_label_banner_only() -> None:
     assert body == ""
 
 
+def test_public_approval_receipt_is_carried_from_upstream_doc() -> None:
+    receipt = "a" * 64
+    entries = parse_public_memos(
+        [
+            _h3("Memos"),
+            _h4("Synthetic Company — Seed Deal Memo"),
+            _p(f"Public approval: sha256:{receipt}"),
+        ],
+        _SETTINGS,
+    )
+    assert entries[0].upstream_approval_sha256 == receipt
+
+
 def test_split_label_unrecognized_text_has_no_label() -> None:
     label, body = _split_label("Just some prose.")
     assert label is None

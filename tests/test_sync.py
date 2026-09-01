@@ -21,6 +21,7 @@ from blog_engine.models import (
 from blog_engine.sync import (
     DuplicateSlugError,
     UnknownSuppressionKeyError,
+    UpstreamApprovalError,
     decide,
     execute,
     suppress,
@@ -31,6 +32,15 @@ from blog_engine.wordpress import WPPost
 
 def _draft(slug: str = "range", markdown: str = "Some content.") -> PostDraft:
     return PostDraft(title="Range", slug=slug, markdown=markdown, category_slugs=("books",))
+
+
+def test_angel_public_create_requires_upstream_approval() -> None:
+    draft = _draft().model_copy(update={"upstream_approval_sha256": None})
+    decisions = decide([(draft, SourceKind.ANGEL_PUBLIC, "Synthetic Company")], Ledger())
+    with pytest.raises(UpstreamApprovalError):
+        execute(
+            decisions, [(draft, SourceKind.ANGEL_PUBLIC, "Synthetic Company")], object(), Ledger()
+        )
 
 
 def _ledger_entry(

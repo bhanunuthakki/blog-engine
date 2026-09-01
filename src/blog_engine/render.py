@@ -101,6 +101,7 @@ def render_public_memo(entry: PublicMemoEntry, settings: Settings) -> PostDraft:
         markdown="\n\n".join(blocks),
         excerpt=" ".join(_strip_markdown(tldr).split()) if tldr else "",
         category_slugs=(settings.investing_category_slug,),
+        upstream_approval_sha256=entry.upstream_approval_sha256,
     )
 
 
