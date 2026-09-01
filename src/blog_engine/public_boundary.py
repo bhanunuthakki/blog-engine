@@ -33,21 +33,24 @@ HIGH_CONFIDENCE_SECRET = re.compile(
 )
 CREDENTIAL_ASSIGNMENT = re.compile(
     r"(?:api[_-]?key|access[_-]?token|auth[_-]?token|client[_-]?secret|password)"
-    r"\s*[=:]\s*[\"'](?P<value>[^\"'\s]{12,})[\"']",
+    r"\s*[=:]\s*(?:[\"'](?P<quoted>[^\"'\s]{12,})[\"']|"
+    r"(?P<bare>[A-Za-z0-9_./+=-]{12,}))",
     re.IGNORECASE,
 )
 SYNTHETIC_SECRET = re.compile(
     r"(?:dummy|example|fake|fixture|placeholder|redacted|changeme|not-a-real|test-token)",
     re.IGNORECASE,
 )
-PERSONAL_ACCOUNT_FACT = re.compile(
-    r"\b(?:my|owner|personal|brokerage|portfolio|holding|account)\b.{0,80}"
-    r"\b(?:cost[ _-]*basis|account[ _-]*balance|position[ _-]*(?:value|size)"
-    r"|share[ _-]*quantity|shares|account[ _-]*(?:id|number))\b.{0,40}[$€£]?\d",
+ACCOUNT_LEVEL_FACT = re.compile(
+    r"\b(?:cost[ _-]*basis|account[ _-]*balance|share[ _-]*quantity|shares|quantity"
+    r"|account[ _-]*(?:id|number))\b\s*[\"']?\s*[:=]\s*[\"']?[$€£]?[0-9A-Za-z]"
+    r"|\bposition[ _-]*(?:value|size)\b\s*[\"']?\s*[:=]\s*[\"']?"
+    r"(?:[$€£]\s*\d|\d[\d,.]*\s*(?:USD|dollars?))",
     re.IGNORECASE,
 )
 ACCOUNT_FACT_SUFFIXES = {".csv", ".json", ".md", ".tsv", ".txt", ".yaml", ".yml"}
 UNSCANNABLE_PRIVATE_SUFFIXES = {".db", ".docx", ".pdf", ".sqlite", ".xlsx", ".zip"}
+CODE_SUFFIXES = {".js", ".py", ".sh", ".ts"}
 
 
 def violations(repo: Path) -> list[str]:
@@ -81,17 +84,17 @@ def violations(repo: Path) -> list[str]:
                 for match in DOC_ID_LITERAL.finditer(text)
             )
         has_secret = (
-            PRIVATE_KEY.search(text) is not None
-            or HIGH_CONFIDENCE_SECRET.search(text) is not None
+            PRIVATE_KEY.search(text) is not None or HIGH_CONFIDENCE_SECRET.search(text) is not None
         )
         if not has_secret:
             has_secret = any(
-                not SYNTHETIC_SECRET.search(match.group("value"))
+                not SYNTHETIC_SECRET.search(match.group("quoted") or match.group("bare"))
+                and (match.group("quoted") is not None or path.suffix.lower() not in CODE_SUFFIXES)
                 for match in CREDENTIAL_ASSIGNMENT.finditer(text)
             )
         has_account_fact = (
             path.suffix.lower() in ACCOUNT_FACT_SUFFIXES
-            and PERSONAL_ACCOUNT_FACT.search(text) is not None
+            and ACCOUNT_LEVEL_FACT.search(text) is not None
         )
         if (
             any(marker in text for marker in FORBIDDEN_TEXT)
