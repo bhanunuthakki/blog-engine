@@ -16,14 +16,14 @@ action in WP Admin. See [AGENTS.md](AGENTS.md) for why, for the positioning filt
 that decides whether a source entry deserves a post at all, and for the plain-
 language voice rules every draft has to follow.
 
-**Come back to [BLOG_NEXT_STEPS.txt](BLOG_NEXT_STEPS.txt) for the current checklist.
-[ROADMAP.md](ROADMAP.md) contains the longer rationale and post backlog.**
+**[ROADMAP.md](ROADMAP.md) contains the rationale and current post backlog.**
 
 ## Setup
 
 ```bash
 python -m venv .venv
-.venv/Scripts/pip install -e ".[dev]"
+.venv/bin/python -m pip install -e ".[dev]"       # macOS/Linux
+# .venv\Scripts\python.exe -m pip install -e ".[dev]"  # Windows
 ```
 
 **WordPress.** Credentials come from a local configured environment file
@@ -119,8 +119,8 @@ Google Doc → DocParagraph[] → BookNotesEntry / PublicMemoEntry
 
 `state/posted.json` is the ledger: which source entry became which post, plus a
 content hash. A changed hash on a still-draft post refreshes it; a changed hash on
-a **published** post is reported and never written — a live post is only edited by
-a human who decided to.
+a **published** post is reported and never written by sync. A live post changes only through the
+explicit, post-specific, read-before-write approval path documented in `wp-post`.
 
 Slugs deliberately exclude mutable metadata (no rating, no date) so an entry keeps
 its identity across edits.
@@ -128,9 +128,10 @@ its identity across edits.
 ## Development
 
 ```bash
-.venv/Scripts/ruff format . && .venv/Scripts/ruff check .
-.venv/Scripts/basedpyright
-.venv/Scripts/pytest
+.venv/bin/ruff format . && .venv/bin/ruff check .
+.venv/bin/basedpyright
+.venv/bin/pytest
+# On Windows, replace `.venv/bin/` with `.venv\Scripts\`.
 ```
 
 Tests are pure-core and hit no network. Integration tests touch the real site and
@@ -145,6 +146,7 @@ git config core.hooksPath .githooks
 ## Out of scope
 
 The **private** memo doc is never read; anonymization is guaranteed upstream by
-`angel-memos`. Linking anonymized `earnings-summary` micro-theses is deferred until
-it gets its own anonymization pass. See [DEFINITIONS.md](DEFINITIONS.md) for the
-canonical vocabulary.
+`angel-memos`. Earnings Summary is not an automated source. An explicitly produced public DCF,
+brief, or portfolio-weight artifact may be used only after the public-boundary gate passes; live
+databases, cost basis, personal amounts, account identifiers, and private research state remain out
+of scope. See [DEFINITIONS.md](DEFINITIONS.md) for the canonical vocabulary.
