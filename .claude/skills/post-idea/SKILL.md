@@ -9,9 +9,9 @@ Deliberately small. The blog is supposed to cost ~1–2 hr/week, so this skill's
 is to make sure the hour he does spend goes at something worth writing — not to
 generate a content calendar.
 
-Read `AGENTS.md` § Positioning and § Voice first, then read
-`../plain-writing/SKILL.md`. Voice is a hard requirement: plain, casual, easy to
-read, no unexplained jargon.
+Read `AGENTS.md` § Positioning first, then read `../plain-writing/SKILL.md` for
+voice and selection. Public copy remains plain, casual, easy to read, and free of
+unexplained jargon.
 
 Two files to read before proposing anything new:
 
@@ -64,7 +64,7 @@ Short. This is a working document, not a deliverable:
 ### 3. Stop
 
 Hand him the angle and stop. Do not draft the post unless he asks. If he does,
-switch registers per `AGENTS.md` § Voice and write it — but the outline is the
+switch registers per `../plain-writing/SKILL.md` and write it — but the outline is the
 deliverable here.
 
 ## Never

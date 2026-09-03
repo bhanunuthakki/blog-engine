@@ -67,6 +67,8 @@ conversation. Propose additions before introducing a new domain term.
 ## Out of scope
 
 - The **private memo doc** — never read. See `AGENTS.md` § Sources.
-- **Earnings-summary briefs** — deferred; needs its own anonymization pass.
+- **Earnings Summary live state** — its database, account-linked inputs, private research state, and
+  unreviewed artifacts are never a source. A separately produced public DCF, brief, or portfolio-weight
+  derivative is eligible only after `scripts/check_public_boundary.py` passes.
 - **Publishing** — a human action in WP Admin, never taken by this project.
 - **Autonomous ideation** — considered and rejected.

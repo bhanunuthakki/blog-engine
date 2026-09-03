@@ -51,9 +51,9 @@ from blog_engine.wordpress import WordPressClient
    you to fix a typo in a live post, that's approval for that specific edit —
    confirm which post and what change, then do it. It is not approval for
    anything else on that post or any other.
-3. **Read before you write.** Fetch the current content and show him what you're
-   changing. An update replaces the whole body; a partial payload silently
-   destroys the rest.
+3. **Read before you write.** Fetch the full current block-markup body and show him what you're
+   changing. An update replaces the whole body; a partial payload silently destroys the rest. After
+   the update, verify that the named edit changed and the rest of the body was preserved.
 4. **Pages are riskier than posts.** `home`, `artifacts`, `investing`,
    `questions`, `influences`, `contact` are all live and hand-built. Read the
    existing block markup and match its structure rather than regenerating the page

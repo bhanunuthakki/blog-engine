@@ -100,6 +100,18 @@ disconfirming risk. An evergreen investing page should state the principles, lin
 to time-stamped reports, and name portfolio-level risks. Do not put allocations on
 an evergreen page if they need manual updates.
 
+Stance changes by post type; plainness does not:
+
+| Format | Stance | Shape | Uncertainty | Anchor |
+|---|---|---|---|---|
+| Book or podcast review | First person; what changed in Bhanu's head | Themes as claims, each carried by a concrete anecdote | DNFs and honest ratings are useful | 8+ recommend, 7 conditional, 6 or below skip; never inflate |
+| Build log | First person; what he built and why | One real design decision, its problem, and what he would change | Say what is broken or unfinished | Working code or observed behavior |
+| Co-investment thesis | Mostly about the company | Comparables, unit economics, and outcome math | Name the specific disconfirming risk | Entry price tied to outcomes |
+
+For a co-investment thesis, use the sibling Angel Memos repository's
+`src/angel_memos/prompts/public_doc_style.md` for structure when it is available, then translate
+finance vocabulary into plain English for the blog.
+
 ### 4. Compress without flattening the voice
 
 Cut in this order:

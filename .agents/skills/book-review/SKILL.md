@@ -9,8 +9,8 @@ Turn Bhanu's reactions into high-impact notes to self. Act as a thought partner:
 surface themes he may have missed, but never let model recall masquerade as
 evidence.
 
-Read the root `AGENTS.md` Voice and book/podcast-review rules before drafting.
-Then read `../plain-writing/SKILL.md` and apply its compression workflow.
+Read the root `AGENTS.md` positioning and publication boundaries before drafting.
+Then read `../plain-writing/SKILL.md` for voice, post-type stance, and compression.
 Plainness, honest ratings, and the drafts-only boundary are binding.
 
 ## Output contract
