@@ -44,7 +44,8 @@ def test_skill_encodes_lessons_from_user_edits() -> None:
     assert "Do not force a design choice, status note, risk, or closing lesson" in normalized_skill
     assert "Keep familiar or incidental shorthand" in skill
     assert "Content selection matters more than sentence polish" in corpus
-    assert "Do not expand an acronym when the expansion does not help the reader" in project_rules
+    assert "when expanding it would interrupt the point" in normalized_skill
+    assert f"Use `{SKILL.as_posix()}` for voice" in project_rules
 
 
 def test_short_concrete_copy_passes_without_findings() -> None:
