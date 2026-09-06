@@ -14,8 +14,10 @@ zero. This repo exists to remove the friction between "Bhanu wrote a thing" and
 
 Consequences that bind every skill here:
 
-- **Drafts only. Never publish.** Every write lands as `status=draft`. Publishing
-  is a human action taken in WP Admin. No skill, cron, or CLI flag publishes.
+- **New posts and ordinary sync writes stay drafts.** They use `status=draft`; an
+  explicitly authorized edit to an existing live post preserves its published status under
+  the exception below. Creating a publication or promoting a draft to published is a human
+  action taken in WP Admin. No skill, cron, or CLI flag performs that transition.
 - **Automated source sync never rewrites a live post.** If a source entry changes after its post
   went public, report the drift and stop; `SyncAction.REPORT_PUBLISHED_DRIFT` encodes this. A live
   edit is allowed only when the user explicitly names that post and exact change in the current
@@ -47,12 +49,19 @@ Before drafting, ask: **does this reflect how Bhanu actually thinks?** Can he
 maintain it without it becoming a burden? Does it invite the conversations he
 wants? Does it clarify the positioning?
 
+## Improvement latitude
+
+Within a requested topic or authorized source workflow, improve the argument, angle, structure,
+voice, and examples, and challenge a source that does not merit a post. Original thinking within
+that assignment is welcome. This does not authorize scheduled ideation, extra source access,
+unattended drafting, or publication. Preserve the owner's deliberate edits and low time burden.
+
 ## Writing workflow
 
 Use `.agents/skills/plain-writing/SKILL.md` for voice, selection, post-type stance, compression,
 and the read-aloud gate. This rulebook owns why and what the project publishes; the skill owns how
 public copy is written. The latest user edit is authoritative, including details they deliberately
-removed. Do not expand an acronym when the expansion does not help the reader. Thesis structure may reuse `../angel-memos/src/angel_memos/prompts/public_doc_style.md`,
+removed. Thesis structure may reuse `../angel-memos/src/angel_memos/prompts/public_doc_style.md`,
 translated through the plain-writing contract for a general reader.
 
 ## Sources, and the privacy line
@@ -89,18 +98,17 @@ placement. Stop before upload or publication; the owner performs both actions.
 
 ## Procedures
 
-The work here breaks into five repeatable workflows. Cross-runtime owners live under
-`.agents/skills`; the remaining `.claude/skills` entries are legacy runtime-local workflows pending
-migration, not a second source for the cross-runtime skills. Codex can invoke discovered repo-local
+The five workflow owners live under `.agents/skills`. Legacy `.claude/skills` files are
+compatibility pointers; they do not own a second policy. Codex can invoke discovered repo-local
 skills with `$<name>`. Other runtimes read the applicable listed file completely before acting.
 
 | Procedure | Purpose | Path |
 |---|---|---|
 | `plain-writing` | Compress public copy without losing facts or Bhanu's voice | `.agents/skills/plain-writing/SKILL.md` |
 | `book-review` | Develop attribution-checked book/podcast notes, then place them after approval | `.agents/skills/book-review/SKILL.md` |
-| `blog-sync` | Find source-doc entries with no post yet and draft them | `.claude/skills/blog-sync/SKILL.md` |
-| `wp-post` | Direct WordPress read/write for one-off post work | `.claude/skills/wp-post/SKILL.md` |
-| `post-idea` | Develop a post angle from a topic or the existing backlog | `.claude/skills/post-idea/SKILL.md` |
+| `blog-sync` | Find source-doc entries with no post yet and draft them | `.agents/skills/blog-sync/SKILL.md` |
+| `wp-post` | Direct WordPress read/write for one-off post work | `.agents/skills/wp-post/SKILL.md` |
+| `post-idea` | Develop a post angle from a topic or the existing backlog | `.agents/skills/post-idea/SKILL.md` |
 
 ## Working here
 
@@ -111,8 +119,13 @@ skills with `$<name>`. Other runtimes read the applicable listed file completely
   scope), so there is no second authorization to perform.
 - `blog-engine sync` defaults to `--dry-run`. Read the decision table before
   `--apply`.
-- Any cron must avoid the protected **03:00–05:00 America/Los_Angeles** window
-  reserved for the earnings-summary pipeline.
+- Scheduling changes follow the current protected-window registry in
+  `../earnings-summary/directives/llm_quota_scheduling.md`; no autonomous ideation or unattended
+  draft creation is authorized by that schedule.
+
+Offline validation: `README.md` owns the full format/lint/typecheck/test sequence; `.venv/bin/pytest`
+is the ordinary offline test gate. Integration-marked tests read real documents and require separate
+live-check authority. Do not treat a source-sync dry run as an offline test.
 
 A draft is ready only when its source identity, privacy boundary, positioning filter, plain-writing
 gate, and relevant tests pass. "Draft created" never means published or publication-approved.
