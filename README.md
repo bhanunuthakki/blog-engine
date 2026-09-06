@@ -86,8 +86,8 @@ through.
 
 ## Skills
 
-`plain-writing` and `book-review` are repo-local Codex skills. Invoke them with
-`$plain-writing` or `$book-review`, or ask in plain language. Claude Code uses the compatibility
+All five workflows below are cross-runtime skills under `.agents/skills`. Invoke the relevant
+`$<name>` in Codex or ask in plain language. Claude Code uses the compatibility
 entry under `.claude/skills`; Gemini reads the canonical `SKILL.md` through the
 project routing in [GEMINI.md](GEMINI.md).
 

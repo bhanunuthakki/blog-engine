@@ -1,7 +1,7 @@
 # Blog roadmap
 
 Sequenced plan, drawn up 2026-07-24. The raw idea list with prior critique lives in
-[.claude/skills/post-idea/backlog.md](.claude/skills/post-idea/backlog.md) — this
+[.agents/skills/post-idea/backlog.md](.agents/skills/post-idea/backlog.md) — this
 file is the order to do things in and why.
 
 Budget assumption: **1–2 hours a week, most weeks zero.** Every estimate below is
