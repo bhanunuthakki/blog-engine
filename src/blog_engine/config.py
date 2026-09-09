@@ -16,7 +16,7 @@ from pydantic import BaseModel, ConfigDict, Field
 
 from blog_engine.models import PostStatus
 
-_DEFAULT_WORDPRESS_ENV = Path.home() / ".gemini" / ".secrets" / "wordpress.env"
+_DEFAULT_WORDPRESS_ENV = Path.home() / ".config" / "blog-engine" / "wordpress.env"
 
 # Document identifiers are local deployment configuration, never source code.
 _DEFAULT_BOOK_NOTES_DOC_ID = "configure-book-notes-doc-id"

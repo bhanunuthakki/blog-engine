@@ -87,9 +87,8 @@ through.
 ## Skills
 
 All five workflows below are cross-runtime skills under `.agents/skills`. Invoke the relevant
-`$<name>` in Codex or ask in plain language. Claude Code uses the compatibility
-entry under `.claude/skills`; Gemini reads the canonical `SKILL.md` through the
-project routing in [GEMINI.md](GEMINI.md).
+`$<name>` when the active runtime supports skill syntax, or ask in plain language. Runtime-specific
+skill directories and root entry files are compatibility pointers; they do not own workflow policy.
 
 | Skill | Use |
 |---|---|
