@@ -98,9 +98,9 @@ placement. Stop before upload or publication; the owner performs both actions.
 
 ## Procedures
 
-The five workflow owners live under `.agents/skills`. Legacy `.claude/skills` files are
-compatibility pointers; they do not own a second policy. Codex can invoke discovered repo-local
-skills with `$<name>`. Other runtimes read the applicable listed file completely before acting.
+The five workflow owners live under `.agents/skills`. Runtime-specific skill directories contain
+discovery pointers only; they do not own a second policy. Invoke a discovered skill through the
+active runtime's supported interface, or read the applicable canonical file completely before acting.
 
 | Procedure | Purpose | Path |
 |---|---|---|
