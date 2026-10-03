@@ -37,10 +37,14 @@ def _draft(slug: str = "range", markdown: str = "Some content.") -> PostDraft:
 def test_angel_public_create_requires_upstream_approval() -> None:
     draft = _draft().model_copy(update={"upstream_approval_sha256": None})
     decisions = decide([(draft, SourceKind.ANGEL_PUBLIC, "Synthetic Company")], Ledger())
+    client = _FakeClient()
     with pytest.raises(UpstreamApprovalError):
         execute(
-            decisions, [(draft, SourceKind.ANGEL_PUBLIC, "Synthetic Company")], object(), Ledger()
+            decisions, [(draft, SourceKind.ANGEL_PUBLIC, "Synthetic Company")], client, Ledger()
         )
+    assert client.slug_lookups == []
+    assert client.created == []
+    assert client.updated == []
 
 
 def _ledger_entry(
