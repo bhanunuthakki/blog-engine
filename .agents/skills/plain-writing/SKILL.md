@@ -10,6 +10,12 @@ Make the point fast. Keep the proof. Cut everything that exists to sound polishe
 Read [references/voice-corpus.md](references/voice-corpus.md) before drafting or
 rewriting public copy. Use it to calibrate judgment, not to imitate phrases.
 
+## Blog positioning
+
+For blog drafts, apply the project rulebook's positioning filter. Check whether the draft
+reflects how Bhanu thinks, fits the low maintenance burden, invites the conversations he
+wants, and clarifies his positioning. Reject a source that does not earn a post.
+
 ## Authority and selection
 
 - Latest user revision outranks an earlier model draft, an older example, and a

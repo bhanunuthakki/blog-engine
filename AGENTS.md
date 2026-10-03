@@ -45,9 +45,7 @@ The site's job is authentic self-expression and learning in public: a repository
 of real interests that invites conversations with interesting people. It is not a
 portfolio site and not a thought-leadership channel.
 
-Before drafting, ask: **does this reflect how Bhanu actually thinks?** Can he
-maintain it without it becoming a burden? Does it invite the conversations he
-wants? Does it clarify the positioning?
+Apply the positioning questions in `.agents/skills/plain-writing/SKILL.md` before drafting.
 
 ## Improvement latitude
 
@@ -58,11 +56,9 @@ unattended drafting, or publication. Preserve the owner's deliberate edits and l
 
 ## Writing workflow
 
-Use `.agents/skills/plain-writing/SKILL.md` for voice, selection, post-type stance, compression,
-and the read-aloud gate. This rulebook owns why and what the project publishes; the skill owns how
-public copy is written. The latest user edit is authoritative, including details they deliberately
-removed. Thesis structure may reuse `../angel-memos/src/angel_memos/prompts/public_doc_style.md`,
-translated through the plain-writing contract for a general reader.
+Use `.agents/skills/plain-writing/SKILL.md` for voice, selection, post-type stance,
+compression, the read-aloud gate, and optional Angel Memos thesis structure. The latest user edit is
+authoritative, including deliberate omissions.
 
 ## Sources, and the privacy line
 
